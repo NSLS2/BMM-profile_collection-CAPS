@@ -5,28 +5,33 @@ name = "BMM-profile-collection-CAPS"
 platforms = ["linux-64"]
 version = "0.1.0"
 
+[system-requirements]
+
+libc = "2.17"
+
 [tasks]
 
 [dependencies]
 
 [feature.profile.dependencies]
 ophyd = "*"
-bluesky = "*"
 pyepics = "*"
 ipython = "*"
+tiled-client = ">=0.1.0b11,<0.2"
+matplotlib = ">=3.9.3,<4"
 
-[feature.tiled-server.pypi-dependencies]
-# tiled = { version = ">=0.1.0b12", extras = ["server"] }
+[feature.profile.pypi-dependencies]
+bluesky = ">=1.13"
+
 
 [feature.tiled-server.dependencies]
-numpy = ">=2.2.0,<3"
-fastapi = ">=0.115.6,<0.116"
-dask = ">=2024.12.0,<2025"
-tifffile = ">=2024.9.20,<2025"
-imagecodecs = ">=2024.9.22,<2025"
-python = "<3.13"
-tiled-server = ">=0.1.0a66,<0.2"
-tiled-client = ">=0.1.0a66,<0.2"
+tiled-server = ">=0.1.0b11,<0.2"
+tiled-client = ">=0.1.0b11,<0.2"
+
+
+[feature.tiled-server.pypi-dependencies]
+canonicaljson = "*"
+
 
 
 [environments]
