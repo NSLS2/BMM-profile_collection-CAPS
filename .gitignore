@@ -1,0 +1,9 @@
+
+# pixi environments
+.pixi
+*.egg-info
+profile_collection-caps/log
+profile_collection-caps/secutiy
+profile_collection-caps/pid
+profile_collection-caps/db
+profile_collection-caps/history.sqlite

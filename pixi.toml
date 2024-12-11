@@ -1,0 +1,10 @@
+[project]
+channels = ["conda-forge"]
+description = "Add a short description here"
+name = "BMM-profile-collection-CAPS"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
