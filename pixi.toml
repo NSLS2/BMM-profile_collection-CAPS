@@ -9,7 +9,7 @@ version = "0.1.0"
 
 libc = "2.17"
 
-[tasks]
+
 
 [dependencies]
 
@@ -23,6 +23,9 @@ zict = "<3"
 numpy = "<2"
 bluesky = ">=1.13.0,<2"
 
+[feature.profile.tasks]
+bsui = "ipython --profile-dir=profile_collection-caps"
+
 
 [feature.tiled-server.dependencies]
 tiled-server = ">=0.1.0b11,<0.2"
@@ -32,9 +35,13 @@ tiled-client = ">=0.1.0b11,<0.2"
 [feature.tiled-server.pypi-dependencies]
 canonicaljson = "*"
 
+[feature.tiled-server.tasks]
+init-local-tiled = "mkdir -p tiled_storage && tiled catalog init sqlite+aiosqlite:////$PWD/tiled_storage/catalog.db"
+start_server = "tiled serve catalog /home/tcaswell/source/bnl/nsls2/BMM-profile_collection-CAPS/tiled_storage/catalog.db -w /home/tcaswell/source/bnl/nsls2/BMM-profile_collection-CAPS/tiled_storage/data/  --api-key=$TILED_API_KEY"
+
+
 
 
 [environments]
 profile = ["profile"]
 local-tiled = ["tiled-server"]
-
