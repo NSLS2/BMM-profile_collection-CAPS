@@ -40,9 +40,21 @@ canonicaljson = "*"
 init-local-tiled = "mkdir -p tiled_storage && tiled catalog init sqlite+aiosqlite:////$PWD/tiled_storage/catalog.db"
 start_server = "tiled serve catalog /home/tcaswell/source/bnl/nsls2/BMM-profile_collection-CAPS/tiled_storage/catalog.db -w /home/tcaswell/source/bnl/nsls2/BMM-profile_collection-CAPS/tiled_storage/data/  --api-key=$TILED_API_KEY"
 
+[feature.gateway.dependencies]
+numpy = "*"
+netifaces = "*"
+dpkt = "*"
+
+[feature.gateway.pypi-dependencies]
+caproto = { git = "https://github.com/tacaswell/caproto.git", rev = "e91046e" }
+
+[feature.gateway.tasks]
+gateway = { cmd = "python complete_mirror.py --host $MIRROR_HOST --port 5064 --pvlist source.txt", cwd = "gateway" }
+
 
 
 
 [environments]
 profile = ["profile"]
 local-tiled = ["tiled-server"]
+gateway = ["gateway"]
