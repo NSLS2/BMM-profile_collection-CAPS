@@ -49,7 +49,7 @@ dpkt = "*"
 caproto = { git = "https://github.com/tacaswell/caproto.git", rev = "e91046e" }
 
 [feature.gateway.tasks]
-gateway = { cmd = "python complete_mirror.py --host $MIRROR_HOST --port 5064 --pvlist source.txt", cwd = "gateway" }
+gateway = { cmd = "python complete_mirror.py --host $MIRROR_HOST --port 5064 --pvlist source.txt -v --list-pvs", cwd = "gateway" }
 
 
 

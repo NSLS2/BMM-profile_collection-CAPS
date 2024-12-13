@@ -1,44 +1,47 @@
-# mtr1
-Mtr-Ax:X.MOVN
-Mtr-Ax:X.VAL
-Mtr-Ax:X.RBV
-Mtr-Ax:X.TWR
-Mtr-Ax:X.TWV
-Mtr-Ax:X.TWF
-Mtr-Ax:X.HLM
-Mtr-Ax:X.LLM
-Mtr-Ax:X.RLV
-Mtr-Ax:X.STOP
-Mtr-Ax:X.VMAX
-Mtr-Ax:X.VELO
-Mtr-Ax:X.VBAS
-Mtr-Ax:X.ACCL
-Mtr-Ax:X.BACC
-Mtr-Ax:X.AR
-Mtr-Ax:X.MRES
-Mtr-Ax:X.SREV
-Mtr-Ax:X.UREV
-Mtr-Ax:X.EGU
-Mtr-Ax:X.DESC
-# mtr2
-Mtr-Ax:Y.MOVN
-Mtr-Ax:Y.VAL
-Mtr-Ax:Y.RBV
-Mtr-Ax:Y.TWR
-Mtr-Ax:Y.TWV
-Mtr-Ax:Y.TWF
-Mtr-Ax:Y.HLM
-Mtr-Ax:Y.LLM
-Mtr-Ax:Y.RLV
-Mtr-Ax:Y.STOP
-Mtr-Ax:Y.VMAX
-Mtr-Ax:Y.VELO
-Mtr-Ax:Y.VBAS
-Mtr-Ax:Y.ACCL
-Mtr-Ax:Y.BACC
-Mtr-Ax:Y.AR
-Mtr-Ax:Y.MRES
-Mtr-Ax:Y.SREV
-Mtr-Ax:Y.UREV
-Mtr-Ax:Y.EGU
-Mtr-Ax:Y.DESC
+# # mtr1
+# DetMtr-Ax:X.MOVN
+# DetMtr-Ax:X.VAL
+# DetMtr-Ax:X.RBV
+# DetMtr-Ax:X.TWR
+# DetMtr-Ax:X.TWV
+# DetMtr-Ax:X.TWF
+# DetMtr-Ax:X.HLM
+# DetMtr-Ax:X.LLM
+# DetMtr-Ax:X.RLV
+# DetMtr-Ax:X.STOP
+# DetMtr-Ax:X.VMAX
+# DetMtr-Ax:X.VELO
+# DetMtr-Ax:X.VBAS
+# DetMtr-Ax:X.ACCL
+# DetMtr-Ax:X.BACC
+# # DetMtr-Ax:X.AR
+# DetMtr-Ax:X.MRES
+# DetMtr-Ax:X.SREV
+# DetMtr-Ax:X.UREV
+# DetMtr-Ax:X.EGU
+# DetMtr-Ax:X.DESC
+# # # mtr2
+DetMtr-Ax:Y.MOVN
+DetMtr-Ax:Y.VAL
+DetMtr-Ax:Y.RBV
+DetMtr-Ax:Y.TWR
+DetMtr-Ax:Y.TWV
+DetMtr-Ax:Y.TWF
+DetMtr-Ax:Y.HLM
+DetMtr-Ax:Y.LLM
+DetMtr-Ax:Y.RLV
+DetMtr-Ax:Y.STOP
+DetMtr-Ax:Y.VMAX
+DetMtr-Ax:Y.VELO
+DetMtr-Ax:Y.VBAS
+DetMtr-Ax:Y.ACCL
+DetMtr-Ax:Y.BACC
+# DetMtr-Ax:Y.AR
+DetMtr-Ax:Y.MRES
+DetMtr-Ax:Y.SREV
+DetMtr-Ax:Y.UREV
+DetMtr-Ax:Y.EGU
+DetMtr-Ax:Y.DESC
+#
+# DetMtr-Ax:Y
+
