@@ -55,6 +55,10 @@ class MirrorRecordFrame(MirrorFrameBase):
     def client_context(self):
         return self.parent.group.client_context
 
+    async def value_write_hook(self, instance, value):
+        """An overridable hook for the parent value having been updated."""
+        ...
+
 
 def pvproperty_from_channel(chan, force_read_only, name=None):
     # TODO make this public
@@ -76,6 +80,8 @@ def pvproperty_from_channel(chan, force_read_only, name=None):
         }
     else:
         extra = {}
+    if hasattr(resp.metadata, 'precision'):
+        extra['precision'] = resp.metadata.precision
 
     value = pvproperty(
         value=resp.data if len(resp.data) else None,
@@ -90,6 +96,7 @@ def pvproperty_from_channel(chan, force_read_only, name=None):
         # Update our own value based on the monitored one:
         try:
             internal_process.set(True)
+            print(type(inst))
             await inst.write(
                 response.data,
                 # We can even make the timestamp the same:
@@ -142,6 +149,7 @@ def make_pvproperty(pv_str, addr_ver, fields, force_read_only):
         else:
             fields_pvproperties = {}
             for field in fields:
+                print(f"{pv_str}.{field}")
                 chan = csc.make_channel_from_address(f"{pv_str}.{field}", addr, 0, 5)
                 chans.append(chan)
                 fields_pvproperties[field] = pvproperty_from_channel(
@@ -152,13 +160,13 @@ def make_pvproperty(pv_str, addr_ver, fields, force_read_only):
             Records = type(
                 "Records",
                 (MirrorRecordFrame,),
-                {**fields_pvproperties, "has_val_field": has_val_field},
+                {**fields_pvproperties, "has_val_field": True},
             )
             if has_val_field:
-                return pvproperty.from_pvspec(val_field.pvspec._replace(record=Records))
+                return pvproperty.from_pvspec(val_field.pvspec._replace(record=Records, name=pv_str))
 
             else:
-                return pvproperty(record=Records)
+                return pvproperty(record=Records, name=pv_str.replace('-', '_').replace(':', ''))
 
     finally:
         for chan in chans:
@@ -182,8 +190,9 @@ def make_mirror(config, force_read_only=False):
             (MirrorFrame,),
             {
                 **{
-                    pv_str: make_pvproperty(
-                        pv_str, next(iter(set(addr_ver))), fields, force_read_only
+                    pv_str.replace('-', '_').replace(':', ''): make_pvproperty(
+                        pv_str, next(iter(set(addr_ver))), fields, force_read_only,
+                        
                     )
                     for pv_str, (fields, addr_ver) in records.items()
                 },
@@ -243,7 +252,7 @@ if __name__ == "__main__":
     if args.pvlist is not None:
         with open(args.pvlist) as fin:
             pvs_from_file = [
-                f'{args.base_prefix}.{pv}'
+                f'{args.base_prefix}{pv}'
                 for pv in [line.strip() for line in fin.readlines()]
                 if pv and not pv.startswith("#")
             ]
@@ -255,5 +264,8 @@ if __name__ == "__main__":
     config = {
         k: ((args.host, args.port), args.ca_version) for k in args.pvs + pvs_from_file
     }
-    ioc = make_mirror(config)(**ioc_options)
+    mirror_cls = make_mirror(config)
+    print(dir(mirror_cls))
+    print(mirror_cls.DetY)
+    ioc = mirror_cls(**ioc_options)
     run(ioc.pvdb, **run_options)
