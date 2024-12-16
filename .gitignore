@@ -2,9 +2,9 @@
 # pixi environments
 .pixi
 *.egg-info
-profile_collection-caps/log
-profile_collection-caps/secutiy
-profile_collection-caps/pid
-profile_collection-caps/db
-profile_collection-caps/history.sqlite
+profile_collection-*/log
+profile_collection-*/secutiy
+profile_collection-*/pid
+profile_collection-*/db
+profile_collection-*/history.sqlite
 tiled_storage
