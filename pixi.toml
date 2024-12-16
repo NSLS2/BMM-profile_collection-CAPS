@@ -11,8 +11,6 @@ libc = "2.17"
 
 
 
-[dependencies]
-
 [feature.profile.dependencies]
 ophyd = "*"
 pyepics = "*"
@@ -23,10 +21,11 @@ zict = "<3"
 numpy = "<2"
 bluesky = ">=1.13.0,<2"
 python = "<3.11.9"
+hklpy = ">=1.1.1,<2"
 
 [feature.profile.tasks]
 bsui = "ipython --profile-dir=profile_collection-caps"
-
+bsui-dev = "ipython --profile-dir=profile_collection-dev"
 
 [feature.tiled-server.dependencies]
 tiled-server = ">=0.1.0b11,<0.2"
